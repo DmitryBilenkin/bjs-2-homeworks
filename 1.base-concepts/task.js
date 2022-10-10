@@ -4,21 +4,29 @@ function solveEquation(a, b, c) {
   let arr = [];
   let disсrim = b ** 2 - 4 * a * c;
 
-  if (disсrim < 0) {
-    arr = [];
-  } else if (disсrim === 0) {
-    arr.push (-b / (2 * a));
-  } else { 
-    arr.push ((-b + Math.sqrt(disсrim)) / (2 * a));
-    arr.push ((-b - Math.sqrt(disсrim)) / (2 * a));
+   if (disсrim === 0) {
+    arr.push(-b / (2 * a));
+  } else if (disсrim > 0){ 
+    arr.push((-b + Math.sqrt(disсrim)) / (2 * a));
+    arr.push((-b - Math.sqrt(disсrim)) / (2 * a));
   }
 
   return arr;
 }
 
 function calculateTotalMortgage(percent, contribution, amount, date) {
- 
-
+  if (isNaN(percent)) {
+    let error = `Параметр "Процентная ставка" содержит неправильное значение "${percent}"`; 
+    return error;
+  }
+  else if (isNaN(contribution)) {
+    let error = `Параметр "Начальный взнос" содержит неправильное значение "${contribution}"`;
+    return error;
+  }
+  else if (isNaN(amount)) {
+    let error =`Параметр "Общая стоимость" содержит неправильное значение "${amount}"`;
+    return error;
+  } else {
   percent = percent / 100;
   let bodyCredit = amount - contribution;
 
@@ -31,6 +39,7 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
   let totalAmount = +((paymentProMonth * dateCredit).toFixed(2));
   
   console.log(totalAmount);
-
+  
   return totalAmount;
+  }
 }
