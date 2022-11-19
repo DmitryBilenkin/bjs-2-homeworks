@@ -82,23 +82,22 @@ class Library {
 
     findBookBy(type, value){
         for(let i = 0; i < this.books.length; i++){
-          for(let key in this.books[i]){
-            if (key === type && this.books[i][key] === value){
+            if (this.books[i][type] === value){
                 return this.books[i];
-            } else {
-              console.log('такой книги нет')
-            }
-          }
-        }     
-    }
+            } 
+        }
+        return null;        
+    }   
+    
         
       giveBookByName(bookName){
         for (let i = 0; i < this.books.length; i++){
             if (this.books[i].name === bookName){
-                console.log(this.books[i]);
-                return this.books.splice(i, 1);                
+            let ourBook = this.books.splice(i, 1);   
+            return ourBook[0];                                        
             }
-        }          
+        }
+        return null      
     }
 }
 
