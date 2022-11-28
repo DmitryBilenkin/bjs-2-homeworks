@@ -34,7 +34,7 @@ class Triangle{
     }
 
     getArea(){
-        let semiPerimeter = ((new Triangle(this.a, this.b, this.c).getPerimeter())/ 2);
+        let semiPerimeter = (this.getPerimeter())/ 2;
         return +(Math.sqrt(semiPerimeter * (semiPerimeter - this.a) * (semiPerimeter - this.b) * (semiPerimeter - this.c))).toFixed(3);
     }    
 }
